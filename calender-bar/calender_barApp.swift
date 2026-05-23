@@ -86,6 +86,18 @@ final class AppDelegate: NSObject, NSApplicationDelegate, NSPopoverDelegate {
         }
     }
 
+    /// App icon scaled down for the menu bar (non-template so it keeps its look).
+    private static let menuBarIcon: NSImage = {
+        let source = NSApp.applicationIconImage ?? NSImage(systemSymbolName: "calendar", accessibilityDescription: "Calendar")!
+        let size = NSSize(width: 18, height: 18)
+        let image = NSImage(size: size)
+        image.lockFocus()
+        source.draw(in: NSRect(origin: .zero, size: size))
+        image.unlockFocus()
+        image.isTemplate = false
+        return image
+    }()
+
     /// Fires exactly on the next minute boundary, then every 60s. `.common` mode keeps
     /// it ticking while the menu/popover is being tracked.
     private func scheduleMinuteTimer() {
@@ -107,9 +119,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate, NSPopoverDelegate {
         let now = Date()
         switch mode {
         case .iconOnly:
-            let image = NSImage(systemSymbolName: "calendar", accessibilityDescription: "Calendar")
-            image?.isTemplate = true
-            button.image = image
+            button.image = Self.menuBarIcon
             button.title = ""
         case .dateOnly:
             button.image = nil
