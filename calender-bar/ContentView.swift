@@ -122,7 +122,7 @@ private struct MenuButton: View {
             }
             Toggle("Open at Login", isOn: $openAtLogin)
             Divider()
-            Button("Quit calenderbar") { NSApp.terminate(nil) }
+            Button("Quit Calendar Bar") { NSApp.terminate(nil) }
         } label: {
             Image(systemName: "ellipsis")
                 .font(.system(size: 13, weight: .semibold))
