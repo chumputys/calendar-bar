@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="calender-bar/Assets.xcassets/AppIcon.appiconset/1024.png" width="160" alt="calenderbar icon">
+</p>
+
 # calenderbar
 
 A lightweight macOS menu-bar calendar. Lives in the status bar, shows the date and time, and opens a custom Liquid Glass calendar popover with Maldives public holidays.
